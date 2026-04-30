@@ -2,7 +2,7 @@ using System;
 
 namespace ListaDeCompras.ConsoleApp.Compartilhado;
 
-public abstract class TelaBase : ITela
+public abstract class TelaBase : ITelaOpcoes
 {
     public string nomeEntidade = string.Empty;
     protected RepositorioBase repositorio;

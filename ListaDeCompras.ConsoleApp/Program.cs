@@ -1,11 +1,24 @@
-﻿using ListaDeCompras.ConsoleApp;
+﻿using System.Collections;
+using System.Collections.Generic;
+using ListaDeCompras.ConsoleApp;
 using ListaDeCompras.ConsoleApp.Compartilhado;
+using ListaDeCompras.ConsoleApp.ModuloCategoria;
+
+// List<Categoria> registros = new List<Categoria>();
+// registros.Add(new Categoria("teste", "branco"));
+
+// foreach (Categoria c in registros)
+// {
+//     System.Console.WriteLine(c.Id);
+// }
+
+// return;
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 
 while (true)
 {
-    ITela? telaSelecionada = telaPrincipal.ApresentarMenuOpcoesPrincipal();
+    ITelaOpcoes? telaSelecionada = telaPrincipal.ApresentarMenuOpcoesPrincipal();
 
     if (telaSelecionada == null)
     {
@@ -17,19 +30,23 @@ while (true)
     {
         string? opcaoSubMenu = telaSelecionada.ObterOpcaoMenu();
 
-        if (telaSelecionada is TelaBase telaBase)
+        if (telaSelecionada is ITelaCrud telaCrud)
         {
+            if (opcaoSubMenu == "S".ToUpper())
+            {
+                break;
+            }
             if (opcaoSubMenu == "1")
-                telaBase.Cadastrar();
+                telaCrud.Cadastrar();
 
             else if (opcaoSubMenu == "2")
-                telaBase.Editar();
+                telaCrud.Editar();
 
             else if (opcaoSubMenu == "3")
-                telaBase.Excluir();
+                telaCrud.Excluir();
 
             else if (opcaoSubMenu == "4")
-                telaBase.VisualizarTodos(deveExibirCabecalho: true);
+                telaCrud.VisualizarTodos(deveExibirCabecalho: true);
         }
     }
 }

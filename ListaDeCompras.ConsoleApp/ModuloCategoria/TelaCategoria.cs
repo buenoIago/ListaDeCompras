@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Runtime.InteropServices;
 using ListaDeCompras.ConsoleApp.Compartilhado;
 
 namespace ListaDeCompras.ConsoleApp.ModuloCategoria;
 
-public class TelaCategoria : TelaBase
+public class TelaCategoria : TelaBase, ITelaOpcoes, ITelaCrud
 {
     public TelaCategoria(RepositorioBase repositorio) : base("Categoria", repositorio)
     {
@@ -13,20 +15,25 @@ public class TelaCategoria : TelaBase
         if (deveExibirCabecalho)
             ExibirCabecalho("Visualização de Categorias");
 
+        List<EntidadeBase> categorias = repositorio.SelecionarTodos();
+
+        if (categorias.Count == 0)
+        {
+            Console.WriteLine("Não existe nenhum registro");
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("Digite ENTER para continuar...");
+            Console.ReadLine();
+
+            return;
+        }
+
         Console.WriteLine(
             "{0, -7} | {1, -20} | {2, -10}",
             "Id", "Nome", "Cor"
         );
 
-        EntidadeBase?[] categorias = repositorio.SelecionarTodos();
-
-        for (int i = 0; i < categorias.Length; i++)
+        foreach (Categoria c in categorias)
         {
-            Categoria? c = (Categoria?)categorias[i];
-
-            if (c == null)
-                continue;
-
             string corSelecionada = c.Cor;
 
             if (corSelecionada == "Vermelho")

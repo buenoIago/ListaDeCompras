@@ -2,7 +2,7 @@ using System;
 
 namespace ListaDeCompras.ConsoleApp.Compartilhado;
 
-public interface ITelaOpcoes
+public interface ITelaOpcao
 {
     string? ObterOpcaoMenu();
 }

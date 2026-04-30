@@ -5,9 +5,9 @@ namespace ListaDeCompras.ConsoleApp;
 
 class TelaPrincipal
 {
-    private RepositorioCategoria repositorioCategoria = new RepositorioCategoria();
+    private readonly RepositorioCategoria repositorioCategoria = new RepositorioCategoria();
 
-    public ITela? ApresentarMenuOpcoesPrincipal()
+    public ITelaOpcoes? ApresentarMenuOpcoesPrincipal()
     {
         Console.Clear();
         Console.WriteLine("---------------------------------");
