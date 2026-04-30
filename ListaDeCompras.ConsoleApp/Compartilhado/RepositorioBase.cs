@@ -25,7 +25,7 @@ public abstract class RepositorioBase
         if (entidadeSelecionada == null)
             return false;
 
-        entidadeSelecionada.AtualizarRegistro(entidade);
+        entidadeSelecionada.AtualizarDados(entidade);
 
         return true;
     }
