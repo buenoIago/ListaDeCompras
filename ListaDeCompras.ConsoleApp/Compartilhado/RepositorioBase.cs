@@ -2,31 +2,35 @@ using System.Collections.Generic;
 
 namespace ListaDeCompras.ConsoleApp.Compartilhado;
 
-public abstract class RepositorioBase
+public abstract class RepositorioBase<T> where T : EntidadeBase // constraint / restrição
 {
-    // protected EntidadeBase?[] registros = new EntidadeBase[100];
-    protected List<EntidadeBase> registros = new List<EntidadeBase>();
+    protected List<T> registros = new List<T>();
 
-    public void Cadastrar(EntidadeBase entidade)
+    public void Cadastrar(T entidade)
     {
         registros.Add(entidade);
     }
 
-    public bool Editar(string idSelecionado, EntidadeBase entidade)
+    public bool Editar(string idSelecionado, T entidadeAtualizada)
     {
-        EntidadeBase? entidadeSelecionado = SelecionarPorId(idSelecionado);
+        T? registroSelecionado = SelecionarPorId(idSelecionado);
 
-        if (entidadeSelecionado == null)
+        if (registroSelecionado == null)
             return false;
 
-        entidadeSelecionado.AtualizarDados(entidade);
+        registroSelecionado.AtualizarDados(entidadeAtualizada);
 
         return true;
     }
 
+    public bool Excluir(T registro)
+    {
+        return registros.Remove(registro);
+    }
+
     public bool Excluir(string idSelecionado)
     {
-        EntidadeBase? registroSelecionado = SelecionarPorId(idSelecionado);
+        T? registroSelecionado = SelecionarPorId(idSelecionado);
 
         if (registroSelecionado == null)
             return false;
@@ -36,38 +40,18 @@ public abstract class RepositorioBase
         return true;
     }
 
-    public EntidadeBase? SelecionarPorId(string idSelecionado)
+    public T? SelecionarPorId(string idSelecionado)
     {
-        // versão 1: foreach
-        foreach(EntidadeBase registro in registros) // para cada item de uma coleção,
+        foreach (T registro in registros)
         {
             if (registro.Id == idSelecionado)
                 return registro;
         }
 
         return null;
-
-        // versão 2: classica (for)
-        // EntidadeBase? entidadeSelecionada = null;
-
-        // for (int i = 0; i < registros.Count; i++)
-        // {
-        //     EntidadeBase? c = (EntidadeBase?) registros[i];
-
-        //     if (c == null)
-        //         continue;
-
-        //     if (c.Id == idSelecionado)
-        //     {
-        //         entidadeSelecionada = c;
-        //         break;
-        //     }
-        // }
-
-        // return entidadeSelecionada;
     }
 
-    public List<EntidadeBase> SelecionarTodos()
+    public List<T> SelecionarTodos()
     {
         return registros;
     }

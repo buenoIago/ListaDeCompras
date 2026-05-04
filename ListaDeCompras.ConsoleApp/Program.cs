@@ -30,12 +30,14 @@ while (true)
     {
         string? opcaoSubMenu = telaSelecionada.ObterOpcaoMenu();
 
+        if (opcaoSubMenu == "S")
+        {
+            Console.Clear();
+            break;
+        }
+
         if (telaSelecionada is ITelaCrud telaCrud)
         {
-            if (opcaoSubMenu == "S".ToUpper())
-            {
-                break;
-            }
             if (opcaoSubMenu == "1")
                 telaCrud.Cadastrar();
 

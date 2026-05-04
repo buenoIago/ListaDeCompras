@@ -5,28 +5,25 @@ namespace ListaDeCompras.ConsoleApp.ModuloCategoria;
 public class Categoria : EntidadeBase
 {
     public string Nome { get; private set; }
-    public string Cor { get; private set; }
+    public CorCategoria Cor { get; private set; }
 
-    public Categoria(string nome, string cor)
+    public Categoria(string nome, CorCategoria cor)
     {
         Nome = nome;
         Cor = cor;
     }
 
-    public override string[] Validar()
+    public override List<string> Validar()
     {
-        string erros = string.Empty;
+        List<string> erros = new List<string>();
 
-        if (Nome.Length == 0 || Nome.Length > 50)
-            erros += "O campo \"Nome\" deve conter entre 0 e 50 caracteres;";
+        if (Nome.Length < 2 || Nome.Length > 50)
+            erros.Add("O campo \"Nome\" deve conter entre 2 e 50 caracteres.");
 
-        if (string.IsNullOrWhiteSpace(Cor))
-            erros += "O campo \"Cor\" deve ser preenchido;";
+        else if (!Enum.IsDefined<CorCategoria>(Cor))
+            erros.Add("O campo \"Cor\" deve conter uma seleção permitida (Branco, Vermelho, Verde, ou Azul).");
 
-        else if (Cor != "Vermelho" && Cor != "Azul" && Cor != "Verde" && Cor != "Branco")
-            erros += "O campo \"Cor\" deve conter uma seleção permitida (Vermelho, Azul, Verde, Branco);";
-
-        return erros.Split(';', StringSplitOptions.RemoveEmptyEntries);
+        return erros;
     }
 
     public override void AtualizarDados(EntidadeBase entidadeAtualizada)

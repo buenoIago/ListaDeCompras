@@ -3,9 +3,15 @@ using ListaDeCompras.ConsoleApp.ModuloCategoria;
 
 namespace ListaDeCompras.ConsoleApp;
 
-class TelaPrincipal
+public class TelaPrincipal
 {
     private readonly RepositorioCategoria repositorioCategoria = new RepositorioCategoria();
+
+    public TelaPrincipal()
+    {
+        Categoria categoria = new Categoria("Café", CorCategoria.Vermelha);
+        repositorioCategoria.Cadastrar(categoria);
+    }
 
     public ITelaOpcoes? ApresentarMenuOpcoesPrincipal()
     {
