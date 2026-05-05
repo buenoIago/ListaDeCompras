@@ -1,19 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using ListaDeCompras.ConsoleApp;
+﻿using ListaDeCompras.ConsoleApp;
 using ListaDeCompras.ConsoleApp.Compartilhado;
 using ListaDeCompras.ConsoleApp.ListaCompras;
-using ListaDeCompras.ConsoleApp.ModuloCategoria;
-
-// List<Categoria> registros = new List<Categoria>();
-// registros.Add(new Categoria("teste", "branco"));
-
-// foreach (Categoria c in registros)
-// {
-//     System.Console.WriteLine(c.Id);
-// }
-
-// return;
+using ListaDeCompras.ConsoleApp.Utilidades;
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 
