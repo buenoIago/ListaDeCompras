@@ -1,4 +1,5 @@
 using ListaDeCompras.ConsoleApp.Compartilhado;
+using ListaDeCompras.ConsoleApp.ListaCompras;
 using ListaDeCompras.ConsoleApp.ModuloCategoria;
 using ListaDeCompras.ConsoleApp.ModuloProduto;
 
@@ -8,6 +9,7 @@ public class TelaPrincipal
 {
     private readonly RepositorioCategoria repositorioCategoria = new RepositorioCategoria();
     private readonly RepositorioProduto repositorioProduto = new RepositorioProduto();
+    private readonly RepositorioListaCompras repositorioListaCompras = new RepositorioListaCompras();
 
     public TelaPrincipal()
     {
@@ -35,6 +37,9 @@ public class TelaPrincipal
 
         if (opcaoMenuPrincipal == "2")
             return new TelaProduto(repositorioProduto, repositorioCategoria);
+
+        if (opcaoMenuPrincipal == "3")
+            return new TelaListaCompras(repositorioListaCompras);
 
         return null;
     }
