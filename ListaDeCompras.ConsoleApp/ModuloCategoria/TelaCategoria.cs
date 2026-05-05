@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Runtime.InteropServices;
 using ListaDeCompras.ConsoleApp.Compartilhado;
+using ListaDeCompras.ConsoleApp.Utilidades;
 
 namespace ListaDeCompras.ConsoleApp.ModuloCategoria;
 
@@ -19,13 +18,7 @@ public class TelaCategoria : TelaBase<Categoria>, ITelaOpcoes, ITelaCrud
 
         if (categorias.Count == 0)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Não existe nenhum registro.");
-            Console.ResetColor();
-            Console.WriteLine("---------------------------------");
-            Console.Write("Digite ENTER para continuar...");
-            Console.ReadLine();
-            return;
+            Notificador.ExibirMensagem("Nenhum item registrado");
         }
 
         Console.WriteLine(

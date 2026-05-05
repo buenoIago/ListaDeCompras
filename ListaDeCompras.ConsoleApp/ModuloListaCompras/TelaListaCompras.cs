@@ -1,5 +1,4 @@
 using ListaDeCompras.ConsoleApp.Compartilhado;
-using ListaDeCompras.ConsoleApp.ModuloListaCompras;
 using ListaDeCompras.ConsoleApp.ModuloProduto;
 using ListaDeCompras.ConsoleApp.Utilidades;
 
@@ -60,35 +59,7 @@ public class TelaListaCompras : TelaBase<ListaCompras>, ITelaOpcoes, ITelaCrud
             return;
         }
 
-        List<ItemListaCompras> itens = listaSelecionada.Itens;
-
-        Console.WriteLine("---------------------------------");
-        Console.WriteLine("Itens atuais da lista de compras");
-        Console.WriteLine("---------------------------------");
-
-        Console.ForegroundColor = ConsoleColor.Yellow;
-
-        if (itens.Count == 0)
-        {
-            Console.WriteLine("Nenhum item adicionado...");
-        }
-        else
-        {
-            Console.WriteLine(
-                "{0, -7} | {1, -30} | {2, -15} | {3, -15}",
-                "Id", "Nome do Produto", "Quantidade", "Preço (R$)"
-            );
-
-            foreach (ItemListaCompras i in itens)
-            {
-                Console.WriteLine(
-                    "{0, -7} | {1, -30} | {2, -15} | {3, -15}",
-                    i.Id, i.Produto.Nome, i.Quantidade, i.Preco.ToString("C2")
-                );
-            }
-        }
-
-        Console.ResetColor();
+        VisualizarItens(listaSelecionada);
 
         Console.WriteLine("---------------------------------");
         Console.WriteLine("Selecione um produto abaixo");
@@ -143,38 +114,7 @@ public class TelaListaCompras : TelaBase<ListaCompras>, ITelaOpcoes, ITelaCrud
             return;
         }
 
-        List<ItemListaCompras> itens = listaSelecionada.Itens;
-
-        Console.WriteLine("---------------------------------");
-        Console.WriteLine("Itens atuais da lista de compras");
-
-        Console.ForegroundColor = ConsoleColor.Yellow;
-
-        if (itens.Count == 0)
-        {
-            Console.ResetColor();
-            Notificador.ExibirMensagem("Não é possível remover itens de uma lista vazia.");
-            return;
-        }
-        else
-        {
-            Console.WriteLine("---------------------------------");
-
-            Console.WriteLine(
-                "{0, -7} | {1, -30} | {2, -15} | {3, -15}",
-                "Id", "Nome do Produto", "Quantidade", "Preço (R$)"
-            );
-
-            foreach (ItemListaCompras i in itens)
-            {
-                Console.WriteLine(
-                    "{0, -7} | {1, -30} | {2, -15} | {3, -15}",
-                    i.Id, i.Produto.Nome, i.Quantidade, i.Preco.ToString("C2")
-                );
-            }
-        }
-
-        Console.ResetColor();
+        VisualizarItens(listaSelecionada);
 
         Console.WriteLine("---------------------------------");
 
@@ -195,27 +135,29 @@ public class TelaListaCompras : TelaBase<ListaCompras>, ITelaOpcoes, ITelaCrud
         Notificador.ExibirMensagem($"O item foi removido da lista com sucesso!");
     }
 
-    public void VisualizarItens()
+    public void VisualizarItens(ListaCompras? listaSelecionada = null)
     {
-        ExibirCabecalho("Visualização de Item de Listas de Compras");
-
-        VisualizarTodos(false);
-
-        Console.WriteLine("---------------------------------");
-
-        Console.Write("Digite o ID da lista que deseja gerenciar (ou S para sair): ");
-        string idSelecionado = Console.ReadLine() ?? string.Empty;
-
-        if (idSelecionado.ToUpper() == "S")
-            return;
-
-        ListaCompras? listaSelecionada = repositorio.SelecionarPorId(idSelecionado);
-
         if (listaSelecionada == null)
         {
-            Notificador.ExibirMensagem("Não foi possível encontrar a lista de compras selecionada.");
-            return;
-        }
+            ExibirCabecalho("Visualização de Item de Listas de Compras");
+
+            VisualizarTodos(false);
+
+            Console.WriteLine("---------------------------------");
+
+            Console.Write("Digite o ID da lista que deseja gerenciar (ou S para sair): ");
+            string idSelecionado = Console.ReadLine() ?? string.Empty;
+
+            if (idSelecionado.ToUpper() == "S")
+                return;
+
+            listaSelecionada = repositorio.SelecionarPorId(idSelecionado);
+
+            if (listaSelecionada == null)
+            {
+                Notificador.ExibirMensagem("Não foi possível encontrar a lista de compras selecionada.");
+                return;
+            }
 
         List<ItemListaCompras> itens = listaSelecionada.Itens;
 
@@ -224,17 +166,17 @@ public class TelaListaCompras : TelaBase<ListaCompras>, ITelaOpcoes, ITelaCrud
 
         if (itens.Count == 0)
         {
-            Console.ResetColor();
-            Notificador.ExibirMensagem("Não é possível remover itens de uma lista vazia.");
+            Notificador.ExibirMensagem("Nenhum item registrado.");
             return;
         }
         else
         {
             Console.WriteLine("---------------------------------");
+            Console.WriteLine($"Itens atuais da lista \"{listaSelecionada.Nome}\"");
+            Console.WriteLine("---------------------------------");
 
             Console.WriteLine(
-                "{0, -7} | {1, -30} | {2, -15} | {3, -15}",
-                "Id", "Nome do Produto", "Quantidade", "Preço (R$)"
+                "{0, -7} | {1, -30} | {2, -15} | {3, -15}"
             );
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -251,8 +193,9 @@ public class TelaListaCompras : TelaBase<ListaCompras>, ITelaOpcoes, ITelaCrud
         }
 
         Console.WriteLine("---------------------------------");
-        Console.WriteLine("Digite ENTER para continuar...");
+        Console.Write("Digite ENTER para continuar...");
         Console.ReadLine();
+        }
     }
 
     public override void VisualizarTodos(bool deveExibirCabecalho)
