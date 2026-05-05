@@ -234,27 +234,18 @@ public class TelaListaCompras : TelaBase<ListaCompras>, ITelaOpcoes, ITelaCrud
         return new ListaCompras(nome);
     }
 
+    protected override List<string> ValidarExclusaoRegistro(ListaCompras registro)
+    {
+        List<string> erros = new List<string>();
+
+        if (registro.Itens.Count > 0)
+            erros.Add("Não é possível excluir uma lista de compras com itens cadastrados.");
+
+        return erros;
+    }
+
     private void VisualizarProdutos()
     {
         List<Produto> produtos = repositorioProduto.SelecionarTodos();
-
-        if (produtos.Count == 0)
-        {
-            Notificador.ExibirMensagem("Nenhum produto registrado.");
-            return;
-        }
-
-        Console.WriteLine(
-            "{0, -7} | {1, -30} | {2, -15} | {3, -20} | {4, -15}",
-            "Id", "Nome", "Medida", "Preço Aproximado", "Categoria"
-        );
-
-        foreach (Produto p in produtos)
-        {
-            Console.WriteLine(
-                "{0, -7} | {1, -30} | {2, -15} | {3, -20} | {4, -15}",
-                p.Id, p.Nome, p.UnidadeMedida, p.PrecoAproximado.ToString("C2"), p.Categoria.Nome
-            );
-        }
     }
 }
