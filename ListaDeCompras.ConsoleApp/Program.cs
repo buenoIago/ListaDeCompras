@@ -1,6 +1,6 @@
 ﻿using ListaDeCompras.ConsoleApp;
 using ListaDeCompras.ConsoleApp.Compartilhado;
-using ListaDeCompras.ConsoleApp.ListaCompras;
+using ListaDeCompras.ConsoleApp.ModuloListaCompras;
 using ListaDeCompras.ConsoleApp.Utilidades;
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
@@ -39,7 +39,7 @@ while (true)
             else if (opcaoSubMenu == "4")
                 telaCrud.VisualizarTodos(deveExibirCabecalho: true);
 
-            if (telaCrud is TelaListaCompras telaListaCompras)
+            else if (telaCrud is TelaListaCompras telaListaCompras)
             {
                 if (opcaoSubMenu == "5")
                     telaListaCompras.AdicionarItem();
