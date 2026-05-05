@@ -1,8 +1,6 @@
-using System.Collections.Generic;
+namespace ListaDeCompras.ConsoleApp.Compartilhado.Memoria;
 
-namespace ListaDeCompras.ConsoleApp.Compartilhado;
-
-public abstract class RepositorioBase<T> where T : EntidadeBase // constraint / restrição
+public abstract class RepositorioBaseEmMemoria<T> where T : EntidadeBase // constraint / restrição
 {
     protected List<T> registros = new List<T>();
 

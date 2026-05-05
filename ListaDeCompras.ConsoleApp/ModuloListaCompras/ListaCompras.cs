@@ -1,6 +1,4 @@
-using System;
 using ListaDeCompras.ConsoleApp.Compartilhado;
-using ListaDeCompras.ConsoleApp.ListaCompras;
 using ListaDeCompras.ConsoleApp.ModuloProduto;
 
 namespace ListaDeCompras.ConsoleApp.ModuloListaCompras;
