@@ -1,6 +1,6 @@
 using System;
 
-namespace ListaDeCompras.ConsoleApp.ListaCompras;
+namespace ListaDeCompras.ConsoleApp.ModuloListaCompras;
 
 public enum StatusListaCompras
 {

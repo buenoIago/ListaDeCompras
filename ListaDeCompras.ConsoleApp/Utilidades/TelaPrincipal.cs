@@ -1,5 +1,4 @@
 using ListaDeCompras.ConsoleApp.Compartilhado;
-using ListaDeCompras.ConsoleApp.ListaCompras;
 using ListaDeCompras.ConsoleApp.ModuloCategoria;
 using ListaDeCompras.ConsoleApp.ModuloListaCompras;
 using ListaDeCompras.ConsoleApp.ModuloProduto;
