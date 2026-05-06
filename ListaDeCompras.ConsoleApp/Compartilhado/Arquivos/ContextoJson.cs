@@ -9,7 +9,7 @@ namespace ListaDeCompras.ConsoleApp.Compartilhado.Arquivos;
 public class ContextoJson
 {
     public List<Categoria> categorias { get; set; } = new List<Categoria>();
-    public List<Produto> produtos { get; set; } = new List<Produto>();
+    public List<Produto> Produtos { get; set; } = new List<Produto>();
     public List<ListaCompras> listaCompras { get; set; } = new List<ListaCompras>();
 
     public void Salvar()
@@ -45,7 +45,7 @@ public class ContextoJson
             return;
         
         this.categorias = contextoSalvo.categorias;
-        this.produtos = contextoSalvo.produtos;
+        this.Produtos = contextoSalvo.Produtos;
         this.listaCompras = contextoSalvo.listaCompras;
 
     }

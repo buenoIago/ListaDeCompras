@@ -2,8 +2,10 @@
 using System.Text.Json.Nodes;
 using ListaDeCompras.ConsoleApp;
 using ListaDeCompras.ConsoleApp.Compartilhado;
+using ListaDeCompras.ConsoleApp.Compartilhado.Arquivos;
 using ListaDeCompras.ConsoleApp.ModuloCategoria;
 using ListaDeCompras.ConsoleApp.ModuloListaCompras;
+using ListaDeCompras.ConsoleApp.ModuloProduto;
 
 // string caminhoDownLoads = "C:\\Users\\Cliente\\Downloads";
 // string caminhoArquivo = caminhoDownLoads + "\\categoria.json";
@@ -21,6 +23,11 @@ using ListaDeCompras.ConsoleApp.ModuloListaCompras;
 
 // File.WriteAllText(caminhoArquivo, jsonString);
 
+ContextoJson contexto = new ContextoJson();
+contexto.Carregar();
+
+RepositorioCategoriaEmArquivo repositorioCategoria = new RepositorioCategoriaEmArquivo(contexto);
+RepositorioProdutoEmArquivo repositorioProduto = new RepositorioProdutoEmArquivo(contexto);
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 
