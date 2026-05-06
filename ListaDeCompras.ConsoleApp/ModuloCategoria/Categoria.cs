@@ -7,6 +7,10 @@ public class Categoria : EntidadeBase
     public string Nome { get; private set; }
     public CorCategoria Cor { get; private set; }
 
+    public Categoria()
+    {
+    }
+
     public Categoria(string nome, CorCategoria cor)
     {
         Nome = nome;

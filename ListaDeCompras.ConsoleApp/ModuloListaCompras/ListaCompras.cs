@@ -22,6 +22,10 @@ public class ListaCompras : EntidadeBase
         }
     }
 
+    public ListaCompras()
+    {
+    }
+    
     public ListaCompras(string nome)
     {
         Nome = nome;

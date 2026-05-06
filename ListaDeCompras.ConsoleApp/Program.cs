@@ -5,21 +5,21 @@ using ListaDeCompras.ConsoleApp.Compartilhado;
 using ListaDeCompras.ConsoleApp.ModuloCategoria;
 using ListaDeCompras.ConsoleApp.ModuloListaCompras;
 
-string caminhoDownLoads = "C:\\Users\\Cliente\\Downloads";
-string caminhoArquivo = caminhoDownLoads + "\\categoria.json";
+// string caminhoDownLoads = "C:\\Users\\Cliente\\Downloads";
+// string caminhoArquivo = caminhoDownLoads + "\\categoria.json";
 
-Categoria categoria = new Categoria("café", CorCategoria.Azul);
-Categoria categoria1 = new Categoria("Mercado", CorCategoria.Vermelha);
+// Categoria categoria = new Categoria("café", CorCategoria.Azul);
+// Categoria categoria1 = new Categoria("Mercado", CorCategoria.Vermelha);
 
-List<Categoria> categorias = [categoria, categoria1];
+// List<Categoria> categorias = [categoria, categoria1];
 
-JsonSerializerOptions opcoesJson = new JsonSerializerOptions();
-opcoesJson.WriteIndented = true;
-opcoesJson.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+// JsonSerializerOptions opcoesJson = new JsonSerializerOptions();
+// opcoesJson.WriteIndented = true;
+// opcoesJson.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 
-string jsonString = JsonSerializer.Serialize(categoria, opcoesJson);
+// string jsonString = JsonSerializer.Serialize(categoria, opcoesJson);
 
-File.WriteAllText(caminhoArquivo, jsonString);
+// File.WriteAllText(caminhoArquivo, jsonString);
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 
