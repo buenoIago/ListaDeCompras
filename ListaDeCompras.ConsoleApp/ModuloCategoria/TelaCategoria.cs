@@ -6,12 +6,12 @@ namespace ListaDeCompras.ConsoleApp.ModuloCategoria;
 
 public class TelaCategoria : TelaBase<Categoria>, ITelaOpcoes, ITelaCrud
 {
-    private readonly RepositorioProdutoEmMemoria repositorioProduto;
+    private readonly RepositorioProdutoEmArquivo repositorioProduto;
 
     public TelaCategoria(
-        RepositorioCategoriaEmMemoria repositorio,
-        RepositorioProdutoEmMemoria repositorioProduto
-        ) : base("Categoria", repositorio)
+        RepositorioCategoriaEmArquivo repositorioCategoria,
+        RepositorioProdutoEmArquivo repositorioProduto
+        ) : base("Categoria", repositorioCategoria)
     {
         this.repositorioProduto = repositorioProduto;
     }

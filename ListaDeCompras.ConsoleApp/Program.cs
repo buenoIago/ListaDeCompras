@@ -24,13 +24,21 @@ using ListaDeCompras.ConsoleApp.ModuloProduto;
 // File.WriteAllText(caminhoArquivo, jsonString);
 
 ContextoJson contexto = new ContextoJson();
+
 contexto.Carregar();
+
+// RepositorioCategoriaEmMemoria repositorioCategoria = new RepositorioCategoriaEmMemoria(contexto);
+// RepositorioProdutoEmMemoria repositorioProduto = new RepositorioProdutoEmMemoria(contexto);
+// RepositorioListaComprasEmMemoria repositorioListaCompras = new RepositorioListaComprasEmMemoria(contexto);
 
 RepositorioCategoriaEmArquivo repositorioCategoria = new RepositorioCategoriaEmArquivo(contexto);
 RepositorioProdutoEmArquivo repositorioProduto = new RepositorioProdutoEmArquivo(contexto);
 RepositorioListaComprasEmArquivo repositorioListaCompras = new RepositorioListaComprasEmArquivo(contexto);
 
-TelaPrincipal telaPrincipal = new TelaPrincipal();
+TelaPrincipal telaPrincipal = new TelaPrincipal(
+    repositorioCategoria, 
+    repositorioProduto, 
+    repositorioListaCompras);
 
 while (true)
 {

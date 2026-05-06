@@ -32,7 +32,7 @@ public class ContextoJson
     {
         string caminhoDiretorio = "C:\\Users\\Cliente\\Downloads";
 
-        string caminhoArquivo = caminhoDiretorio + "\\dados.Json";
+        string caminhoArquivo = caminhoDiretorio + "\\dados.json";
 
         string JsonString = File.ReadAllText(caminhoArquivo);
 
