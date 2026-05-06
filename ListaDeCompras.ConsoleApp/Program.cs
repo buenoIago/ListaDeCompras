@@ -28,6 +28,7 @@ contexto.Carregar();
 
 RepositorioCategoriaEmArquivo repositorioCategoria = new RepositorioCategoriaEmArquivo(contexto);
 RepositorioProdutoEmArquivo repositorioProduto = new RepositorioProdutoEmArquivo(contexto);
+RepositorioListaComprasEmArquivo repositorioListaCompras = new RepositorioListaComprasEmArquivo(contexto);
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 
