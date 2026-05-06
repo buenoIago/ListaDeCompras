@@ -21,6 +21,7 @@ using ListaDeCompras.ConsoleApp.ModuloListaCompras;
 
 // File.WriteAllText(caminhoArquivo, jsonString);
 
+
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 
 while (true)
