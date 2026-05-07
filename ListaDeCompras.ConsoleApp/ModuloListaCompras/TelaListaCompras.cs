@@ -175,10 +175,6 @@ public class TelaListaCompras : TelaBase<ListaCompras>, ITelaOpcoes, ITelaCrud
             Console.WriteLine($"Itens atuais da lista \"{listaSelecionada.Nome}\"");
             Console.WriteLine("---------------------------------");
 
-            Console.WriteLine(
-                "{0, -7} | {1, -30} | {2, -15} | {3, -15}"
-            );
-
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             foreach (ItemListaCompras i in itens)
