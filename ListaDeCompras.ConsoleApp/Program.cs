@@ -7,29 +7,9 @@ using ListaDeCompras.ConsoleApp.ModuloCategoria;
 using ListaDeCompras.ConsoleApp.ModuloListaCompras;
 using ListaDeCompras.ConsoleApp.ModuloProduto;
 
-// string caminhoDownLoads = "C:\\Users\\Cliente\\Downloads";
-// string caminhoArquivo = caminhoDownLoads + "\\categoria.json";
-
-// Categoria categoria = new Categoria("café", CorCategoria.Azul);
-// Categoria categoria1 = new Categoria("Mercado", CorCategoria.Vermelha);
-
-// List<Categoria> categorias = [categoria, categoria1];
-
-// JsonSerializerOptions opcoesJson = new JsonSerializerOptions();
-// opcoesJson.WriteIndented = true;
-// opcoesJson.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-
-// string jsonString = JsonSerializer.Serialize(categoria, opcoesJson);
-
-// File.WriteAllText(caminhoArquivo, jsonString);
-
 ContextoJson contexto = new ContextoJson();
 
 contexto.Carregar();
-
-// RepositorioCategoriaEmMemoria repositorioCategoria = new RepositorioCategoriaEmMemoria(contexto);
-// RepositorioProdutoEmMemoria repositorioProduto = new RepositorioProdutoEmMemoria(contexto);
-// RepositorioListaComprasEmMemoria repositorioListaCompras = new RepositorioListaComprasEmMemoria(contexto);
 
 RepositorioCategoriaEmArquivo repositorioCategoria = new RepositorioCategoriaEmArquivo(contexto);
 RepositorioProdutoEmArquivo repositorioProduto = new RepositorioProdutoEmArquivo(contexto);
