@@ -11,9 +11,9 @@ ContextoJson contexto = new ContextoJson();
 
 contexto.Carregar();
 
-RepositorioCategoriaEmArquivo repositorioCategoria = new RepositorioCategoriaEmArquivo(contexto);
-RepositorioProdutoEmArquivo repositorioProduto = new RepositorioProdutoEmArquivo(contexto);
-RepositorioListaComprasEmArquivo repositorioListaCompras = new RepositorioListaComprasEmArquivo(contexto);
+IRepositorio<Categoria> repositorioCategoria = new RepositorioCategoriaEmMemoria();
+IRepositorio<Produto>  repositorioProduto = new RepositorioProdutoEmMemoria();
+IRepositorio<ListaCompras>  repositorioListaCompras = new RepositorioListaComprasEmMemoria();
 
 TelaPrincipal telaPrincipal = new TelaPrincipal(
     repositorioCategoria, 

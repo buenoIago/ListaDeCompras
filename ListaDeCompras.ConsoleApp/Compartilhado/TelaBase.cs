@@ -7,9 +7,9 @@ namespace ListaDeCompras.ConsoleApp.Compartilhado;
 public abstract class TelaBase<T> where T : EntidadeBase
 {
     protected string nomeEntidade;
-    protected RepositorioBaseEmArquivo<T> repositorio;
+    protected IRepositorio<T> repositorio;
 
-    protected TelaBase(string nomeEntidade, RepositorioBaseEmArquivo<T> repositorio)
+    protected TelaBase(string nomeEntidade, IRepositorio<T> repositorio)
     {
         this.nomeEntidade = nomeEntidade;
         this.repositorio = repositorio;
